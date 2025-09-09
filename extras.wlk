@@ -1,3 +1,5 @@
+import pepita.*
+
 object nido {
   const property position = game.at(8, 8)
 
@@ -8,11 +10,12 @@ object nido {
 }
 
 object silvestre {
+    const presa = pepita
+    method image() {
+     return "silvestre.png"
+    }   
 
-method image() {
-  return "silvestre.png"
-}
-  method position() = game.at(0,0) 
+    method position() = game.at(presa.position().x(),0) 
 }
 
 
