@@ -1,5 +1,7 @@
 import wollok.game.*
 import pepita.*
+import extras.*
+
 
 program pepitaGame {
 	game.title("Pepita") 	//Valor por defecto "Wollok Game"
@@ -8,7 +10,13 @@ program pepitaGame {
 	game.cellSize(50) 		//valor por defecto 50
 	//search assets in assets folder, for example, for the background
 	//Valor por defecto game.ground("ground.png")
-	
+	//El orden de agregar visuales importa, Siempre el ultimo esta por encima
 	//game.addVisual(pepita)
+	game.boardGround("fondo.jpg")
+
+	game.addVisual(nido)
+	game.addVisual(silvestre)
+	game.addVisualCharacter(pepita)
+
 	game.start()	
 }
