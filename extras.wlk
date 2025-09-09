@@ -15,7 +15,11 @@ object silvestre {
      return "silvestre.png"
     }   
 
-    method position() = game.at(presa.position().x(),0) 
+    method position() = game.at(self.x(),0) 
+
+    method x() = 3.max(presa.position().x()) //.max(3)
+
+    //if (presa.position().x() >= 3) {presa.position().x()} else {3}
 }
 
 
