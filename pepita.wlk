@@ -12,7 +12,7 @@ object pepita {
 	  return "pepita-" + self.estado() + ".png"
 	}
 
-	method estado() {
+	method estado() {//devuelve que tipo de pepita va a ser dependiendo de su posicion
 	  return if (self.estaSobre(predador)) {"gris"}
 	  			else if (self.estaSobre(hogar)) {"grande"}
 				else {"base"}
