@@ -17,7 +17,7 @@ program pepitaGame {
 	//game.addVisual(pepita)
 	game.boardGround("fondo.jpg")
 
-	game.addVisual(alpiste)
+
 	game.addVisual(manzana)
 	game.addVisual(nido)
 	game.addVisual(silvestre)
@@ -29,7 +29,7 @@ program pepitaGame {
 	keyboard.down ().onPressDo( {pepita.mover(abajo)} )
 	keyboard.right().onPressDo( {pepita.mover(derecha)} )
 	keyboard.left ().onPressDo( {pepita.mover(izquierda)} )
-	keyboard.c().onPressDo( {pepita.comer(game.uniqueCollider(pepita)) } )
+	keyboard.c().onPressDo( { pepita.comerAca() } )
 
 	game.start()	
 }

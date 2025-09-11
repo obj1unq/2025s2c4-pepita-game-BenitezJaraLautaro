@@ -15,7 +15,7 @@ object pepita {
 	}
 
 	method estado() {//devuelve que tipo de pepita va a ser dependiendo de su posicion
-	  return if (self.estaSobre(predador) or self.puedoMover()) {"gris"}
+	  return if (self.estaSobre(predador) or !self.puedoMover()) {"gris"}
 	  			else if (self.estaSobre(hogar)) {"grande"}
 				else {"base"}
 	}
@@ -34,8 +34,14 @@ object pepita {
 
 	method textColor() = "FF00FF"
 
+
 	method comer(comida) {
 		energia = energia + comida.energiaQueOtorga()
+	}
+
+	method comerAca() {
+		
+	    self.comer(game.uniqueCollider(self))
 	}
 
 
@@ -52,9 +58,9 @@ object pepita {
 	}
 
 	method mover(direccion) {
-	  if(self.puedoMover())	
+	  if(self.puedoMover()) {	
 	  self.volar(1)
-	  position = direccion.siguiente(position)
+	  position = direccion.siguiente(position)} 
 	}
 
 	/*method volarArriba() {
