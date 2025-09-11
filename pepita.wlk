@@ -1,6 +1,8 @@
 import extras.*
 import comidas.*
 import wollok.game.*
+import direcciones.*
+
 
 object pepita {
 	var energia  = 100
@@ -22,7 +24,7 @@ object pepita {
 	  return position == personaje.position()
 	}
 
-	
+
 
 	method text() = "Energy: /n" + energia
 
@@ -32,14 +34,41 @@ object pepita {
 		energia = energia + comida.energiaQueOtorga()
 	}
 
+
+	method energiaNecesaria(kms) {
+	  return 9 * kms 
+	}
+
 	method volar(kms) {
-		energia = energia - 10 - kms 
+		energia = energia - self.energiaNecesaria(kms)
 	}
 	
 	method energia() {
 		return energia
 	}
 
+	method mover(direccion) {
+	  self.volar(1)
+	  position = direccion.siguiente(position)
+	}
+
+	/*method volarArriba() {
+	  self.volar(1)
+	  self.position(self.position().up(1))	
+	}
+	method volarAbajo() {
+	  self.volar(1)
+	  self.position(self.position().down(1))	
+	}
+	method volarDerecha() {
+	  self.volar(1)
+	  self.position(self.position().left(1))	
+	}
+	method volarIzquierda() {
+	  self.volar(1)
+	  self.position(self.position().right(1))	
+	}
+*/
 	method redibujar() {
 	  game.removeVisual(self)
 	  game.addVisual(self)
