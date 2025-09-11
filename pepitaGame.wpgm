@@ -2,6 +2,8 @@ import direcciones.*
 import wollok.game.*
 import pepita.*
 import extras.*
+import comidas.*
+
 
 
 program pepitaGame {
@@ -15,14 +17,19 @@ program pepitaGame {
 	//game.addVisual(pepita)
 	game.boardGround("fondo.jpg")
 
+	game.addVisual(alpiste)
+	game.addVisual(manzana)
 	game.addVisual(nido)
 	game.addVisual(silvestre)
 	game.addVisual(pepita)
+
+
 
 	keyboard.up   ().onPressDo( {pepita.mover(arriba)} )//bloque: ejecuta el comando dentro cuando se presiona la tecla
 	keyboard.down ().onPressDo( {pepita.mover(abajo)} )
 	keyboard.right().onPressDo( {pepita.mover(derecha)} )
 	keyboard.left ().onPressDo( {pepita.mover(izquierda)} )
+	keyboard.c().onPressDo( {pepita.comer(game.uniqueCollider(pepita)) } )
 
 	game.start()	
 }
