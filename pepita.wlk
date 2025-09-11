@@ -1,9 +1,28 @@
+import extras.*
+import comidas.*
+import wollok.game.*
 
 object pepita {
 	var energia  = 100
 	var property position = game.at(0,1)
+	const predador = silvestre
+	const hogar    = nido
 
-	method image() = "pepita.png"
+	method image() {
+	  return "pepita-" + self.estado() + ".png"
+	}
+
+	method estado() {
+	  return if (self.estaSobre(predador)) {"gris"}
+	  			else if (self.estaSobre(hogar)) {"grande"}
+				else {"base"}
+	}
+
+	method estaSobre(personaje) {
+	  return position == personaje.position()
+	}
+
+	
 
 	method text() = "Energy: /n" + energia
 
