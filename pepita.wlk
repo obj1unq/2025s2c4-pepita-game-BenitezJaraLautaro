@@ -21,7 +21,10 @@ object pepita {
 	}
 
 	method puedoMover() {
-	  return energia >= self.energiaNecesaria(1)
+	  return energia >= self.energiaNecesaria(1) and !self.estaAtrapada()
+	}
+	method estaAtrapada() {
+	  return self.position() == predador.position()
 	}
 
 	method estaSobre(personaje) {
@@ -65,7 +68,16 @@ object pepita {
 	method mover(direccion) {
 	  if(self.puedoMover()) {	
 	  self.volar(1)
-	  position = direccion.siguiente(position)} 
+	  position = direccion.siguiente(position)}
+	  else {
+		self.perder()
+	  } 
+	}
+
+	method perder() {
+		game.say(self, "perdi")
+		game.schedule(2000, {game.stop()})
+
 	}
 
 	/*method volarArriba() {
