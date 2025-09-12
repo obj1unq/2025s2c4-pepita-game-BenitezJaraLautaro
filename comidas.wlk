@@ -22,6 +22,10 @@ object manzana {
 		//madurez += 1
 	}
 
+	method andate() {
+	  game.removeVisual(self)
+	}
+
 }
 
 object alpiste {

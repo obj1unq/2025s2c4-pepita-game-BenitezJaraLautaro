@@ -40,8 +40,13 @@ object pepita {
 	}
 
 	method comerAca() {
-		
-	    self.comer(game.uniqueCollider(self))
+		const comida = self.loQueHayAca()
+	    self.comer(comida)
+		comida.andate()
+
+	}
+	method loQueHayAca() {
+		return game.uniqueCollider(self)//El objeto que esta en la misma posicion del principal	  
 	}
 
 

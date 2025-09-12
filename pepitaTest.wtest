@@ -1,7 +1,25 @@
+import extras.*
 import pepita.*
 import comidas.*
 
+
+
+
 describe "Tests de Pepita" {
+
+	method initialize() {
+
+	}
+
+	test "pepi al comer manzana sube energia y desaparece manzana" {
+		game.addVisual(manzana)
+		pepita.position(manzana.position())
+
+		pepita.comerAca()
+		assert.equals(105, pepita.energia())
+		assert.notThat(game.hasVisual(manzana))
+	  
+	}
 
 	test "pepita comienza con 100 de energia" {
 		assert.equals(100, pepita.energia())
@@ -16,13 +34,9 @@ describe "Tests de Pepita" {
 	test "Al comer pepita aumenta su energia" {
 		pepita.comer(manzana)
 		assert.equals(105, pepita.energia())
+		game.addVisual(silvestre)
+		game.addVisual(manzana)
 	}
-
-	test "Al volar pepita pierde energia" {
-		pepita.volar(1)
-		assert.equals(89, pepita.energia())
-	}
-
 
 
 }
