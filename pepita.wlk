@@ -54,7 +54,7 @@ object pepita {
 
 
 	method energiaNecesaria(kms) {
-	  return 9 * kms 
+	  return 2 * kms 
 	}
 
 	method volar(kms) {
@@ -65,14 +65,20 @@ object pepita {
 		return energia
 	}
 
+
 	method mover(direccion) {
-	  if(self.puedoMover()) {	
+	  if(self.puedoMover() and !self.estaEnlimite(direccion)) {	//resolver perder
 	  self.volar(1)
 	  position = direccion.siguiente(position)}
-	  else {
-		self.perder()
-	  } 
+	  else if (!self.puedoMover()) {self.perder()}
+
+
 	}
+	method estaEnlimite(direccion) {
+	  return direccion.borde(position)
+	}
+
+
 
 	method perder() {
 		game.say(self, "perdi")
