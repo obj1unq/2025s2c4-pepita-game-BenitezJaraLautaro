@@ -3,6 +3,8 @@ import wollok.game.*
 import pepita.*
 import extras.*
 import comidas.*
+import muros.*
+
 
 
 
@@ -21,6 +23,9 @@ program pepitaGame {
 	game.addVisual(manzana)
 	game.addVisual(nido)
 	game.addVisual(silvestre)
+	game.addVisual(muro1)
+	game.addVisual(muro2)
+	game.addVisual(muro3)
 	game.addVisual(pepita)
 
 

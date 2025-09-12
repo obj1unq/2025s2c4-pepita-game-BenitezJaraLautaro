@@ -67,7 +67,7 @@ object pepita {
 
 
 	method mover(direccion) {
-	  if(self.puedoMover() and !self.estaEnlimite(direccion)) {	//resolver perder
+	  if(self.puedoMover() and !self.estaEnlimite(direccion) and !self.estoyFrenteAMuro(direccion)) {	//resolver perder
 	  self.volar(1)
 	  position = direccion.siguiente(position)}
 	  else if (!self.puedoMover()) {self.perder()}
@@ -76,6 +76,9 @@ object pepita {
 	}
 	method estaEnlimite(direccion) {
 	  return direccion.borde(position)
+	}
+	method estoyFrenteAMuro(direccion) {
+	  return direccion.hayMuro(position)
 	}
 
 
