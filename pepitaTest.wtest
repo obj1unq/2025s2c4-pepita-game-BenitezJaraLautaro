@@ -1,6 +1,7 @@
 import extras.*
 import pepita.*
 import comidas.*
+import direcciones.*
 
 
 
@@ -36,6 +37,16 @@ describe "Tests de Pepita" {
 		assert.equals(105, pepita.energia())
 		game.addVisual(silvestre)
 		game.addVisual(manzana)
+	}
+
+	test "al mover arriba queda en 0,1" {
+		pepita.position(game.at(0,0))
+
+		pepita.mover(arriba)
+
+		assert.equals(game.at(0,1), pepita.position())
+
+	  
 	}
 
 
