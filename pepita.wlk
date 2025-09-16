@@ -6,7 +6,7 @@ import direcciones.*
 
 object pepita {
 	var energia  = 100
-	var property position = game.at(0,1)
+	var property position = game.at(0,10)
 	const predador = silvestre
 	const hogar    = nido
 
