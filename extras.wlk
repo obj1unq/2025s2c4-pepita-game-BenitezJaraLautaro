@@ -21,6 +21,10 @@ object silvestre {
     method x() = 3.max(presa.position().x()) //.max(3)
 
     //if (presa.position().x() >= 3) {presa.position().x()} else {3}
+
+    method provocarEfectoColision(personaje) {
+      personaje.perder()
+    }
 }
 
 

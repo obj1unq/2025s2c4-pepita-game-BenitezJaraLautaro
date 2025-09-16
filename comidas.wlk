@@ -26,6 +26,11 @@ object manzana {
 	  game.removeVisual(self)
 	}
 
+	method provocarEfectoColision(personaje) {
+		personaje.comerAca()
+	  
+	}
+
 }
 
 object alpiste {
