@@ -56,7 +56,7 @@ object pepita {
 
 
 	method energiaNecesaria(kms) {
-	  return 9 * kms 
+	  return 2 * kms 
 	}
 
 	method volar(kms) {
@@ -69,7 +69,7 @@ object pepita {
 
 
 	method mover(direccion) {
-	  if(self.puedoMover() and !self.estaEnlimite(direccion) and !self.estoyFrenteAMuro(direccion)) {	//resolver perder
+	  if(self.puedoMover() and !self.estaEnlimite(direccion) and !self.estoyFrenteAMuro(direccion)) {	
 	  self.volar(1)
 	  position = direccion.siguiente(position)}
 	  else if (!self.puedoMover()) {self.perder()}
@@ -99,6 +99,13 @@ object pepita {
 		}
 
 	}
+
+	method cae() {
+
+		if (self.puedoMover() and !self.estaEnlimite(abajo) and !self.estoyFrenteAMuro(abajo)) {position = position.down(1)}
+			  
+	}
+
 
 	/*method volarArriba() {
 	  self.volar(1)

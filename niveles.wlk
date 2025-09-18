@@ -24,6 +24,7 @@ object nivel1 {
 	keyboard.c().onPressDo( { pepita.comerAca() } )
 
     game.onCollideDo(pepita, {algo => pepita.efectoColision(algo)})
+	game.onTick(1000, pepita, {pepita.cae()})
       
     }
 
