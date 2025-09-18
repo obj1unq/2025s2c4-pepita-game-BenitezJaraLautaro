@@ -1,3 +1,4 @@
+import niveles.*
 import extras.*
 import comidas.*
 import wollok.game.*
@@ -55,7 +56,7 @@ object pepita {
 
 
 	method energiaNecesaria(kms) {
-	  return 2 * kms 
+	  return 9 * kms 
 	}
 
 	method volar(kms) {
@@ -83,10 +84,19 @@ object pepita {
 	}
 
 
+	method inicialziar() {
+		position = game.at(0, 1)
+		energia  = 100	  
+	}
+
 
 	method perder() {
-		game.say(self, "perdi")
-		game.schedule(2000, {game.stop()})
+		game.say(self, "perdi, presione r para reiniciar nivel")
+		keyboard.r().onPressDo {
+			game.clear()
+			nivel1.inicializarNivel1()
+			self.inicialziar()
+		}
 
 	}
 
@@ -110,8 +120,9 @@ object pepita {
 
 	method efectoColision(algo) {
 		algo.provocarEfectoColision(self)
-	  
 	}
+
+	
 
 	method redibujar() {
 	  game.removeVisual(self)
