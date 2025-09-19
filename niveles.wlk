@@ -6,7 +6,6 @@ import comidas.*
 import muros.*
 
 object nivel1 {
-	var property protagonista = pepita
 	
 	method inicializarNivel1() {
 		game.addVisual(manzana)

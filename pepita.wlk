@@ -19,11 +19,11 @@ object pepita {
 
 	method estado() {//devuelve que tipo de pepita va a ser dependiendo de su posicion
 	  return if (self.esHogar()) {"grande"}
-	  			else if (!self.puedoMover()) {"gris"}
+	  			else if (!self.puedoVolar()) {"gris"}
 				else {"base"}
 	}
 
-	method puedoMover() {//puedeVolar
+	method puedoVolar() {//puedeVolar
 	  return energia >= self.energiaNecesaria(1) and !self.estaAtrapada() 
 	}
 	method estaAtrapada() {
@@ -71,11 +71,15 @@ object pepita {
 
 
 	method mover(direccion) {
-	  if(self.puedoMover() and !self.estaEnlimite(direccion) and !self.estoyFrenteAMuro(direccion)) {//Agregar condiciones en un solo metodo	
+	  if(self.puedeMover(direccion)) {//Agregar condiciones en un solo metodo	
 	  self.volar(1)
 	  position = direccion.siguiente(position)}
-	  else if (!self.puedoMover()) {self.perder()}
+	  else if (!self.puedoVolar()) {self.perder()}
 
+	}
+	method puedeMover(direccion) {
+		return self.puedoVolar() and !self.estaEnlimite(direccion) and !self.estoyFrenteAMuro(direccion)
+	  
 	}
 
 
@@ -102,7 +106,7 @@ object pepita {
 	}
 
 	method cae() {
-		if (self.puedoMover() and !self.estaEnlimite(abajo) and !self.estoyFrenteAMuro(abajo)) {position = position.down(1)}
+		if (self.puedeMover(abajo)) {position = position.down(1)}
 			  
 	}
 
