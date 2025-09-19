@@ -9,7 +9,7 @@ object arriba {
     return posicion.up(1)
   }
 
-  method borde(posicion) {
+  method borde(posicion) {//estaEnElBorde
     return posicion.y() == game.height()-1
   }
 

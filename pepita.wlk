@@ -3,26 +3,28 @@ import extras.*
 import comidas.*
 import wollok.game.*
 import direcciones.*
+import organizador.*
 
 
 object pepita {
-	var energia  = 100
+	var property energia  = 100
 	var property position = game.at(0,1)
-	const predador = silvestre
-	const hogar    = nido
+	const predador           = silvestre
+	const hogar              = nido
+	var property perdi       = false 
 
 	method image() {
 	  return "pepita-" + self.estado() + ".png"
 	}
 
 	method estado() {//devuelve que tipo de pepita va a ser dependiendo de su posicion
-	  return if (!self.puedoMover()) {"gris"}
-	  			else if (self.esHogar()) {"grande"}
+	  return if (self.esHogar()) {"grande"}
+	  			else if (!self.puedoMover()) {"gris"}
 				else {"base"}
 	}
 
-	method puedoMover() {
-	  return energia >= self.energiaNecesaria(1) and !self.estaAtrapada()
+	method puedoMover() {//puedeVolar
+	  return energia >= self.energiaNecesaria(1) and !self.estaAtrapada() 
 	}
 	method estaAtrapada() {
 	  return self.position() == predador.position()
@@ -31,7 +33,7 @@ object pepita {
 	method estaSobre(personaje) {
 	  return position == personaje.position()
 	}
-	method esHogar() =self.estaSobre(hogar)
+	method esHogar() = self.estaSobre(hogar) 
 
 
 
@@ -69,13 +71,14 @@ object pepita {
 
 
 	method mover(direccion) {
-	  if(self.puedoMover() and !self.estaEnlimite(direccion) and !self.estoyFrenteAMuro(direccion)) {	
+	  if(self.puedoMover() and !self.estaEnlimite(direccion) and !self.estoyFrenteAMuro(direccion)) {//Agregar condiciones en un solo metodo	
 	  self.volar(1)
 	  position = direccion.siguiente(position)}
 	  else if (!self.puedoMover()) {self.perder()}
 
-
 	}
+
+
 	method estaEnlimite(direccion) {
 	  return direccion.borde(position)
 	}
@@ -92,18 +95,24 @@ object pepita {
 
 	method perder() {
 		game.say(self, "perdi, presione r para reiniciar nivel")
-		keyboard.r().onPressDo {
-			game.clear()
-			nivel1.inicializarNivel1()
-			self.inicialziar()
-		}
+		game.removeTickEvent("caer")
+		oraganizador.reiniciar()
+		
 
 	}
 
 	method cae() {
-
 		if (self.puedoMover() and !self.estaEnlimite(abajo) and !self.estoyFrenteAMuro(abajo)) {position = position.down(1)}
 			  
+	}
+
+	method ganar() {
+		
+		if(self.image() == "pepita-grande.png") {
+			game.say(self, "!!GANEE¡¡")
+			game.stop()
+			}
+
 	}
 
 

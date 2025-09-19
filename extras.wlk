@@ -8,6 +8,11 @@ object nido {
     return "nido.png"
   }
 
+  method provocarEfectoColision(personaje) {
+    personaje.ganar()
+    
+  }
+
 }
 
 object silvestre {
