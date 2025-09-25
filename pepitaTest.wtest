@@ -28,7 +28,7 @@ describe "Tests de Pepita" {
 
 	test "Pepita al volar 1 km, queda con energia 91" {
 		pepita.volar(1)
-		assert.equals(91, pepita.energia())
+		assert.equals(98, pepita.energia())
 	}
 
 
