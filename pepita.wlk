@@ -12,6 +12,7 @@ object pepita {
 	const predador           = silvestre
 	const hogar              = nido
 	var property perdi       = false 
+	var property ultimaDireccion = null
 
 	method image() {
 	  return "pepita-" + self.estado() + ".png"
@@ -73,12 +74,17 @@ object pepita {
 	method mover(direccion) {
 	  if(self.puedeMover(direccion)) {//Agregar condiciones en un solo metodo	
 	  self.volar(1)
-	  position = direccion.siguiente(position)}
+	  position = direccion.siguiente(position)
+	  ultimaDireccion = direccion}
 	  else if (!self.puedoVolar()) {self.perder()}
 
 	}
 	method puedeMover(direccion) {
 		return self.puedoVolar() and !self.estaEnlimite(direccion) and !self.estoyFrenteAMuro(direccion)
+	  
+	}
+	method retroceder() {
+		position = ultimaDireccion.anterior(position)
 	  
 	}
 

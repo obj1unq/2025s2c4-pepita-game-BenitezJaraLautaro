@@ -4,6 +4,11 @@ object muro1 {
   method image() {
     return "muro.png"
   }
+
+  method efectoColision(alguien) {
+    alguien.retroceder()
+    
+  }
 }
 
 object muro2 {
